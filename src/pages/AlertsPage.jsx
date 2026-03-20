@@ -1,6 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FaBell, FaCheck, FaTrash, FaArrowLeft, FaInfoCircle, FaExclamationTriangle, FaCheckCircle, FaStar, FaRegBell } from 'react-icons/fa';
+import Navbar from '../components/Navbar';
 
 const AlertsPage = () => {
   const navigate = useNavigate();
@@ -62,29 +63,23 @@ const AlertsPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#FDFDFD] font-sans text-gray-800 p-10">
-      <div className="max-w-4xl mx-auto animate-in fade-in duration-700">
+    <div className="min-h-screen bg-[#FDFDFD] font-sans text-gray-800">
+      <Navbar unreadCount={unreadCount} />
+      
+      <div className="max-w-4xl mx-auto p-10 animate-in fade-in duration-700">
         
         {/* Header */}
         <header className="flex items-center justify-between mb-8">
-          <div className="flex items-center gap-6">
-            <button 
-              onClick={() => navigate('/dashboard')}
-              className="w-12 h-12 flex items-center justify-center bg-white shadow-sm border border-gray-50 rounded-2xl hover:bg-gray-50 transition-all text-gray-400"
-            >
-              <FaArrowLeft />
-            </button>
-            <div>
-              <div className="flex items-center gap-3">
-                <h1 className="text-4xl font-black tracking-tighter text-gray-800">Notifications</h1>
-                {unreadCount > 0 && (
-                  <span className="bg-blue-500 text-white text-[10px] font-black px-2.5 py-1 rounded-full shadow-lg shadow-blue-100">
-                    {unreadCount} NEW
-                  </span>
-                )}
-              </div>
-              <p className="text-gray-400 font-bold text-sm mt-1 tracking-wide">Stay updated with all daycare activities</p>
+          <div>
+            <div className="flex items-center gap-3">
+              <h1 className="text-4xl font-black tracking-tighter text-gray-800">Notifications</h1>
+              {unreadCount > 0 && (
+                <span className="bg-blue-500 text-white text-[10px] font-black px-2.5 py-1 rounded-full shadow-lg shadow-blue-100">
+                  {unreadCount} NEW
+                </span>
+              )}
             </div>
+            <p className="text-gray-400 font-bold text-sm mt-1 tracking-wide">Stay updated with all daycare activities</p>
           </div>
           <button 
             onClick={markAllRead}
