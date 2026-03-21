@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { FaBell, FaSignOutAlt, FaChevronDown, FaCamera, FaRunning, FaUtensils, FaMoon, FaStar, FaExclamationTriangle, FaUsers, FaCheckCircle, FaRegCommentDots, FaRegClock, FaClipboardCheck, FaRegPlusSquare, FaUserFriends, FaRegEnvelope, FaPalette } from 'react-icons/fa';
+import { FaBell, FaSignOutAlt, FaChevronDown, FaCamera, FaRunning, FaUtensils, FaMoon, FaStar, FaCalendarAlt, FaUsers, FaCheckCircle, FaRegCommentDots, FaRegClock, FaClipboardCheck, FaRegPlusSquare, FaUserFriends, FaRegEnvelope, FaPalette } from 'react-icons/fa';
 import Navbar from '../components/Navbar';
 
 const StaffDashboard = () => {
@@ -27,7 +27,7 @@ const StaffDashboard = () => {
     { id: 'Meal', label: 'Meal', icon: <FaUtensils className="text-gray-400" /> },
     { id: 'Nap', label: 'Nap', icon: <FaMoon className="text-gray-400" /> },
     { id: 'Milestone', label: 'Milestone', icon: <FaStar className="text-gray-400" /> },
-    { id: 'Incident', label: 'Incident', icon: <FaExclamationTriangle className="text-gray-400" /> },
+    { id: 'Schedule', label: 'Schedule', icon: <FaCalendarAlt className="text-gray-400" /> },
   ];
 
   return (

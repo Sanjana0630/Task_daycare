@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
-import { FaBell, FaSignOutAlt, FaChevronDown, FaCamera, FaRunning, FaUtensils, FaMoon, FaStar, FaExclamationTriangle } from 'react-icons/fa';
+import { FaBell, FaSignOutAlt, FaChevronDown, FaCamera, FaRunning, FaUtensils, FaMoon, FaStar, FaCalendarAlt } from 'react-icons/fa';
 
 const LogActivityPage = () => {
-  const [activeType, setActiveType] = useState('Incident');
+  const [activeType, setActiveType] = useState('Activity');
 
   const activityTypes = [
     { id: 'Activity', label: 'Activity', icon: <FaRunning /> },
     { id: 'Meal', label: 'Meal', icon: <FaUtensils /> },
     { id: 'Nap', label: 'Nap', icon: <FaMoon /> },
     { id: 'Milestone', label: 'Milestone', icon: <FaStar /> },
-    { id: 'Incident', label: 'Incident', icon: <FaExclamationTriangle /> },
+    { id: 'Schedule', label: 'Schedule', icon: <FaCalendarAlt /> },
   ];
 
   return (
@@ -71,7 +71,7 @@ const LogActivityPage = () => {
                     onClick={() => setActiveType(type.id)}
                     className={`flex flex-col items-center justify-center p-6 rounded-[24px] border-2 transition-all duration-300 group ${
                       activeType === type.id
-                        ? 'bg-blue-50 border-[#3498DB] text-[#3498DB] shadow-lg shadow-blue-100'
+                        ? 'bg-blue-50 border-blue-400 text-[#3498DB] shadow-lg shadow-blue-100'
                         : 'bg-white border-gray-100 text-gray-400 hover:border-gray-200 hover:bg-gray-50'
                     }`}
                   >
