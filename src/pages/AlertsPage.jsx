@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { FaBell, FaCheck, FaTrash, FaInfoCircle, FaExclamationTriangle, FaCheckCircle, FaStar, FaRegBell } from 'react-icons/fa';
+import { FaBell, FaCheck, FaTrash, FaInfoCircle, FaExclamationTriangle, FaCheckCircle, FaStar, FaRegBell, FaArrowLeft } from 'react-icons/fa';
 import Navbar from '../components/Navbar';
 
 const AlertsPage = () => {
@@ -73,6 +73,15 @@ const AlertsPage = () => {
       
       <main className="max-w-4xl mx-auto p-10 animate-in fade-in duration-1000 slide-in-from-bottom-5">
         
+        {/* Back Button */}
+        <button 
+          onClick={() => navigate('/dashboard')}
+          className="group flex items-center gap-3 mb-8 px-6 py-2.5 bg-white/60 backdrop-blur-md rounded-2xl border border-white/50 text-gray-500 font-black text-[11px] uppercase tracking-widest hover:bg-white/80 hover:text-blue-600 hover:shadow-lg hover:shadow-blue-900/5 transition-all duration-300 active:scale-95"
+        >
+          <FaArrowLeft className="group-hover:-translate-x-1 transition-transform duration-300" />
+          Back to Dashboard
+        </button>
+
         {/* Header - Glassmorphism */}
         <header className="flex items-center justify-between mb-12 p-8 bg-white/70 backdrop-blur-xl rounded-3xl border border-white/50 shadow-xl shadow-blue-900/5">
           <div>
