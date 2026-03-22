@@ -1,4 +1,5 @@
 import React, { useState, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { 
   FaChevronLeft, FaChevronRight, 
   FaPlus, FaSearch, FaCalendarDay, FaCalendarAlt, 
@@ -9,6 +10,7 @@ import {
 import Navbar from '../components/Navbar';
 
 const SchedulePage = () => {
+  const navigate = useNavigate();
   const [activeFilter, setActiveFilter] = useState('All');
   const [searchQuery, setSearchQuery] = useState('');
   const [showAddModal, setShowAddModal] = useState(false);
@@ -65,11 +67,20 @@ const SchedulePage = () => {
         
         {/* Header Section */}
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
-          <div>
-            <h1 className="text-2xl font-semibold text-gray-900 tracking-tight">Schedule Overview</h1>
-            <p className="text-sm text-gray-500 flex items-center gap-2">
-              <FaCalendarDay className="text-[#3498DB] text-xs" /> Manage and track daily activities for Rainbow Room
-            </p>
+          <div className="flex items-start gap-4">
+            <button 
+              onClick={() => navigate('/')}
+              className="mt-1 w-8 h-8 flex items-center justify-center bg-white border border-gray-100 text-gray-400 hover:text-[#3498DB] rounded-lg shadow-sm transition-all"
+              title="Back to Dashboard"
+            >
+              <FaChevronLeft className="text-xs" />
+            </button>
+            <div>
+              <h1 className="text-2xl font-semibold text-gray-900 tracking-tight">Schedule Overview</h1>
+              <p className="text-sm text-gray-500 flex items-center gap-2">
+                <FaCalendarDay className="text-[#3498DB] text-xs" /> Manage and track daily activities for Rainbow Room
+              </p>
+            </div>
           </div>
           
           {/* Quick Action Bar */}
