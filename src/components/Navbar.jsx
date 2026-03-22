@@ -9,7 +9,7 @@ const Navbar = ({ unreadCount = 0 }) => {
     <nav className="bg-white px-8 py-5 flex items-center justify-between border-b border-gray-50 relative z-50">
       <div className="flex items-center gap-4 cursor-pointer" onClick={() => navigate('/dashboard')}>
         <div className="w-12 h-12 bg-[#80D0C7] rounded-[14px] flex items-center justify-center shadow-lg shadow-teal-50">
-           <div className="w-6 h-6 bg-white/40 rounded-full"></div>
+          <div className="w-6 h-6 bg-white/40 rounded-full"></div>
         </div>
         <div>
           <h1 className="text-2xl font-black tracking-tight text-gray-800 leading-none">Little Dreamers</h1>
@@ -18,7 +18,7 @@ const Navbar = ({ unreadCount = 0 }) => {
       </div>
 
       <div className="flex items-center gap-6">
-        <button 
+        <button
           onClick={() => navigate('/alerts')}
           className="relative p-2.5 bg-gray-50 text-gray-400 hover:text-teal-400 rounded-xl transition-all"
         >
@@ -37,7 +37,7 @@ const Navbar = ({ unreadCount = 0 }) => {
             <img src="https://ui-avatars.com/api/?name=Jenny+Staff&background=80D0C7&color=fff" alt="Profile" className="w-full h-full object-cover" />
           </div>
           <button className="flex items-center gap-2 px-4 py-2 bg-gray-50 text-gray-500 font-bold rounded-xl text-[10px] hover:bg-gray-100 transition-all ml-1 border border-gray-100">
-             <FaSignOutAlt className="text-[10px]" /> Logout
+            <FaSignOutAlt className="text-[10px]" /> Logout
           </button>
         </div>
       </div>

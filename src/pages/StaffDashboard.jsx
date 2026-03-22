@@ -101,7 +101,13 @@ const StaffDashboard = () => {
                    {activityTypes.map((type) => (
                      <button
                       key={type.id}
-                      onClick={() => setActiveActivityType(type.id)}
+                      onClick={() => {
+                        if (type.id === 'Schedule') {
+                          navigate('/schedule');
+                        } else {
+                          setActiveActivityType(type.id);
+                        }
+                      }}
                       className={`flex flex-col items-center justify-center py-6 px-4 rounded-xl border transition-all duration-300 group ${
                         activeActivityType === type.id
                           ? 'border-blue-400 bg-blue-50 text-[#3498DB] shadow-sm'

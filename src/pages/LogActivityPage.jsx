@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { FaBell, FaSignOutAlt, FaChevronDown, FaCamera, FaRunning, FaUtensils, FaMoon, FaStar, FaCalendarAlt } from 'react-icons/fa';
 
 const LogActivityPage = () => {
+  const navigate = useNavigate();
   const [activeType, setActiveType] = useState('Activity');
 
   const activityTypes = [
@@ -68,7 +70,13 @@ const LogActivityPage = () => {
                 {activityTypes.map((type) => (
                   <button
                     key={type.id}
-                    onClick={() => setActiveType(type.id)}
+                    onClick={() => {
+                      if (type.id === 'Schedule') {
+                        navigate('/schedule');
+                      } else {
+                        setActiveType(type.id);
+                      }
+                    }}
                     className={`flex flex-col items-center justify-center p-6 rounded-[24px] border-2 transition-all duration-300 group ${
                       activeType === type.id
                         ? 'bg-blue-50 border-blue-400 text-[#3498DB] shadow-lg shadow-blue-100'
