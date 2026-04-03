@@ -54,7 +54,7 @@ const StaffDashboard = () => {
         <div className="max-w-[1200px] mx-auto px-8 relative pt-52 animate-in fade-in slide-in-from-top-4 duration-700">
           
           {/* Stats Cards Row */}
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8 mt-8">
             {stats.map((stat, idx) => (
               <div key={idx} className={`${stat.color} dark:bg-opacity-10 rounded-2xl p-8 flex flex-col items-center justify-center text-center shadow-sm hover:shadow-md transition-all border border-theme`}>
                  <div className={`${stat.iconColor} text-3xl mb-4 bg-white/40 dark:bg-black/20 p-3 rounded-2xl`}>
