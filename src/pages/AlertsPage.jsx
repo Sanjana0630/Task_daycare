@@ -63,10 +63,10 @@ const AlertsPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 font-sans text-gray-800 relative overflow-x-hidden">
+    <div className="min-h-screen bg-theme-page font-sans text-theme-main transition-colors duration-300 relative overflow-x-hidden">
       {/* Subtle Blurred Background Image */}
       <div 
-        className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?auto=format&fit=crop&q=80&w=2000')] bg-cover bg-center opacity-[0.03] blur-xl -z-10"
+        className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?auto=format&fit=crop&q=80&w=2000')] bg-cover bg-center opacity-[0.02] dark:opacity-[0.05] blur-xl -z-10"
       ></div>
 
       <Navbar unreadCount={unreadCount} />
@@ -76,24 +76,24 @@ const AlertsPage = () => {
         {/* Back Button */}
         <button 
           onClick={() => navigate('/dashboard')}
-          className="group flex items-center gap-3 mb-8 px-6 py-2.5 bg-white/60 backdrop-blur-md rounded-2xl border border-white/50 text-gray-500 font-black text-[11px] uppercase tracking-widest hover:bg-white/80 hover:text-blue-600 hover:shadow-lg hover:shadow-blue-900/5 transition-all duration-300 active:scale-95"
+          className="group flex items-center gap-3 mb-8 px-6 py-2.5 bg-theme-card/60 backdrop-blur-md rounded-2xl border border-theme text-theme-muted font-black text-[11px] uppercase tracking-widest hover:bg-theme-card hover:text-blue-600 hover:shadow-lg hover:shadow-blue-900/5 transition-all duration-300 active:scale-95"
         >
           <FaArrowLeft className="group-hover:-translate-x-1 transition-transform duration-300" />
           Back to Dashboard
         </button>
 
         {/* Header - Glassmorphism */}
-        <header className="flex items-center justify-between mb-12 p-8 bg-white/70 backdrop-blur-xl rounded-3xl border border-white/50 shadow-xl shadow-blue-900/5">
+        <header className="flex items-center justify-between mb-12 p-8 bg-theme-card/70 backdrop-blur-xl rounded-3xl border border-theme shadow-xl shadow-blue-900/5">
           <div>
             <div className="flex items-center gap-4">
-              <h1 className="text-4xl font-black tracking-tighter text-gray-800">Notifications</h1>
+              <h1 className="text-4xl font-black tracking-tighter text-theme-main">Notifications</h1>
               {unreadCount > 0 && (
                 <span className="bg-blue-500/90 text-white text-[10px] font-black px-3 py-1.5 rounded-full shadow-lg shadow-blue-200 backdrop-blur-sm">
                   {unreadCount} NEW
                 </span>
               )}
             </div>
-            <p className="text-gray-400 font-bold text-sm mt-2 tracking-wide flex items-center gap-2">
+            <p className="text-theme-muted font-bold text-sm mt-2 tracking-wide flex items-center gap-2">
               <span className="w-1.5 h-1.5 bg-blue-400 rounded-full"></span>
               Stay updated with all daycare activities
             </p>
@@ -103,8 +103,8 @@ const AlertsPage = () => {
             disabled={unreadCount === 0}
             className={`px-8 py-3.5 rounded-full font-black text-[11px] uppercase tracking-widest transition-all duration-300 shadow-sm border ${
               unreadCount > 0 
-              ? 'bg-white/80 text-blue-600 hover:bg-blue-50 hover:shadow-md border-white' 
-              : 'bg-white/30 text-gray-300 border-white/20 cursor-not-allowed'
+              ? 'bg-theme-card text-blue-600 hover:bg-blue-50 dark:hover:bg-blue-900/20 hover:shadow-md border-theme' 
+              : 'bg-theme-card/30 text-theme-muted border-theme/20 cursor-not-allowed'
             }`}
           >
             Mark all as read
@@ -112,15 +112,15 @@ const AlertsPage = () => {
         </header>
 
         {/* Filter Tabs - Glassmorphism */}
-        <div className="bg-white/60 backdrop-blur-lg rounded-full p-2 flex items-center gap-1 w-fit mb-12 border border-white/50 shadow-lg shadow-blue-900/5">
+        <div className="bg-theme-card/60 backdrop-blur-lg rounded-full p-2 flex items-center gap-1 w-fit mb-12 border border-theme shadow-lg shadow-blue-900/5">
           {['All', 'Unread', 'Important'].map((filter) => (
             <button
               key={filter}
               onClick={() => setActiveFilter(filter)}
               className={`px-10 py-3.5 rounded-full font-black text-[10px] uppercase tracking-widest transition-all duration-500 ${
                 activeFilter === filter
-                  ? 'bg-blue-100/80 text-blue-600 shadow-inner'
-                  : 'text-gray-400 hover:text-gray-600 hover:bg-white/40'
+                  ? 'bg-blue-100/80 dark:bg-blue-900/40 text-blue-600 shadow-inner'
+                  : 'text-theme-muted hover:text-theme-main hover:bg-theme-card/40'
               }`}
             >
               {filter}
@@ -131,12 +131,12 @@ const AlertsPage = () => {
         {/* Notification List */}
         <div className="space-y-16 pb-24">
           {filteredAlerts.length === 0 ? (
-            <div className="text-center py-24 bg-white/60 backdrop-blur-md rounded-[40px] border border-white shadow-2xl flex flex-col items-center animate-in zoom-in-95 duration-500">
-              <div className="w-24 h-24 bg-white/80 backdrop-blur rounded-full flex items-center justify-center mb-8 shadow-inner border border-white">
-                <FaRegBell className="text-4xl text-blue-100" />
+            <div className="text-center py-24 bg-theme-card/60 backdrop-blur-md rounded-[40px] border border-theme shadow-2xl flex flex-col items-center animate-in zoom-in-95 duration-500">
+              <div className="w-24 h-24 bg-theme-card backdrop-blur rounded-full flex items-center justify-center mb-8 shadow-inner border border-theme">
+                <FaRegBell className="text-4xl text-blue-100 dark:text-blue-900/40" />
               </div>
-              <h3 className="text-3xl font-black text-gray-800 mb-3">No new notifications</h3>
-              <p className="text-gray-400 font-bold text-sm tracking-wide">We'll alert you when something happens!</p>
+              <h3 className="text-3xl font-black text-theme-main mb-3">No new notifications</h3>
+              <p className="text-theme-muted font-bold text-sm tracking-wide">We'll alert you when something happens!</p>
             </div>
           ) : (
             Object.keys(groupedAlerts).map((group) => {
@@ -145,56 +145,56 @@ const AlertsPage = () => {
 
               return (
                 <div key={group} className="animate-in fade-in slide-in-from-left-4 duration-700">
-                  <div className="flex items-center gap-4 mb-8 ml-2">
-                    <h3 className="text-[11px] font-black text-blue-300 uppercase tracking-[0.3em]">{group}</h3>
-                    <div className="flex-1 h-px bg-gradient-to-r from-blue-100 to-transparent"></div>
+                  <div className="flex items-center gap-4 mb-4 ml-2">
+                    <h3 className="text-[13px] font-bold text-blue-500 dark:text-blue-400 uppercase tracking-[0.2em]">{group}</h3>
+                    <div className="flex-1 h-px bg-gradient-to-r from-blue-200 dark:from-blue-500/30 to-transparent"></div>
                   </div>
-                  <div className="space-y-6">
+                  <div className="flex flex-col gap-[14px]">
                     {groupAlerts.map((alert) => (
                       <div 
                         key={alert.id}
-                        className={`group relative flex items-center justify-between p-7 rounded-[28px] shadow-lg backdrop-blur-md border transition-all duration-500 hover:shadow-2xl hover:-translate-y-1.5 ${
+                        className={`group relative flex items-center justify-between p-3 rounded-xl border-2 transition-all duration-300 hover:shadow-md hover:shadow-blue-500/5 hover:border-blue-400/30 ${
                           alert.unread 
-                          ? 'bg-white/90 border-blue-100/50' 
-                          : 'bg-white/60 border-white/40'
+                          ? 'bg-theme-card border-blue-400/20' 
+                          : 'bg-theme-card border-theme'
                         }`}
                       >
-                        <div className="flex items-center gap-8">
-                          <div className={`w-16 h-16 rounded-3xl flex items-center justify-center text-2xl shadow-inner border border-white/40 ${getIconBg(alert.type)}`}>
+                        <div className="flex items-center gap-4">
+                          <div className={`w-12 h-12 rounded-2xl flex items-center justify-center text-xl shadow-inner border border-theme ${getIconBg(alert.type)}`}>
                             {getAlertIcon(alert.type)}
                           </div>
                           <div>
-                            <div className="flex items-center gap-4">
-                              <h4 className={`font-black text-[18px] tracking-tight leading-tight ${alert.unread ? 'text-gray-800' : 'text-gray-500'}`}>
+                            <div className="flex items-center gap-3">
+                              <h4 className={`font-black text-[16px] tracking-tight leading-tight ${alert.unread ? 'text-theme-main' : 'text-theme-muted'}`}>
                                 {alert.message}
                               </h4>
-                              {alert.unread && <span className="w-3 h-3 bg-blue-500 rounded-full border-2 border-white shadow-lg animate-pulse"></span>}
-                              {alert.priority === 'high' && <FaStar className="text-yellow-400 text-sm drop-shadow-sm" title="Important" />}
+                              {alert.unread && <span className="w-2.5 h-2.5 bg-blue-500 rounded-full border-2 border-theme shadow-lg animate-pulse"></span>}
+                              {alert.priority === 'high' && <FaStar className="text-yellow-400 text-xs drop-shadow-sm" title="Important" />}
                             </div>
-                            <p className="text-gray-400 font-bold text-[11px] mt-2 uppercase tracking-widest flex items-center gap-2">
+                            <p className="text-theme-muted font-bold text-[10px] mt-1 uppercase tracking-widest flex items-center gap-2">
                               <span className="opacity-50 tracking-normal font-sans italic lowercase">{alert.time}</span>
-                              <span className="w-1 h-1 bg-gray-200 rounded-full"></span>
+                              <span className="w-1 h-1 bg-theme-subtle rounded-full"></span>
                               {alert.date}
                             </p>
                           </div>
                         </div>
 
-                        <div className="flex items-center gap-4 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-x-4 group-hover:translate-x-0">
+                        <div className="flex items-center gap-3 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-x-4 group-hover:translate-x-0">
                           {alert.unread && (
                             <button 
                               onClick={() => markRead(alert.id)}
-                              className="p-3.5 bg-white/90 text-blue-500 rounded-2xl hover:bg-blue-500 hover:text-white transition-all shadow-md border border-blue-50 active:scale-90"
+                              className="p-2.5 bg-theme-card/90 text-blue-500 rounded-xl hover:bg-blue-500 hover:text-white transition-all shadow-md border border-theme active:scale-90"
                               title="Mark as read"
                             >
-                              <FaCheck className="text-xs" />
+                              <FaCheck className="text-[10px]" />
                             </button>
                           )}
                           <button 
                             onClick={() => deleteAlert(alert.id)}
-                            className="p-3.5 bg-white/90 text-red-500 rounded-2xl hover:bg-red-500 hover:text-white transition-all shadow-md border border-red-50 active:scale-90"
+                            className="p-2.5 bg-theme-card/90 text-red-500 rounded-xl hover:bg-red-500 hover:text-white transition-all shadow-md border border-theme active:scale-90"
                             title="Delete"
                           >
-                            <FaTrash className="text-xs" />
+                            <FaTrash className="text-[10px]" />
                           </button>
                         </div>
                       </div>

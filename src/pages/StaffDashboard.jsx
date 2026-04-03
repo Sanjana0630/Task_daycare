@@ -31,7 +31,7 @@ const StaffDashboard = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-[#FDFDFD] font-sans text-gray-800">
+    <div className="min-h-screen bg-theme-page font-sans text-theme-main transition-colors duration-300">
       <Navbar unreadCount={2} />
 
       {/* Main Container */}
@@ -41,7 +41,7 @@ const StaffDashboard = () => {
           <img 
             src="/daycare-bg.png" 
             alt="Daycare Background" 
-            className="w-full h-full object-cover opacity-60 grayscale-[20%] sepia-[10%]"
+            className="w-full h-full object-cover opacity-40 grayscale-[20%] sepia-[10%]"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-[#80D0C7]/80 to-[#00bea3]/60 mix-blend-multiply"></div>
           
@@ -56,14 +56,14 @@ const StaffDashboard = () => {
           {/* Stats Cards Row */}
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
             {stats.map((stat, idx) => (
-              <div key={idx} className={`${stat.color} rounded-2xl p-8 flex flex-col items-center justify-center text-center shadow-sm hover:shadow-md transition-all`}>
-                 <div className={`${stat.iconColor} text-3xl mb-4 bg-white/40 p-3 rounded-2xl`}>
+              <div key={idx} className={`${stat.color} dark:bg-opacity-10 rounded-2xl p-8 flex flex-col items-center justify-center text-center shadow-sm hover:shadow-md transition-all border border-theme`}>
+                 <div className={`${stat.iconColor} text-3xl mb-4 bg-white/40 dark:bg-black/20 p-3 rounded-2xl`}>
                    {stat.icon}
                  </div>
-                 <h4 className="text-gray-400 text-[11px] font-bold uppercase tracking-widest mb-1">{stat.title}</h4>
+                 <h4 className="text-theme-muted text-[11px] font-bold uppercase tracking-widest mb-1">{stat.title}</h4>
                  <div className="flex items-baseline gap-2">
-                   <span className="text-3xl font-black text-gray-800 tracking-tighter">{stat.value}</span>
-                   {stat.subValue && <span className="text-gray-400 text-[10px] font-bold">{stat.subValue}</span>}
+                   <span className="text-3xl font-black text-theme-main tracking-tighter">{stat.value}</span>
+                   {stat.subValue && <span className="text-theme-muted text-[10px] font-bold">{stat.subValue}</span>}
                  </div>
               </div>
             ))}
@@ -71,15 +71,15 @@ const StaffDashboard = () => {
 
           {/* Tab Navigation Below Cards */}
           <div className="flex justify-center mb-10">
-            <div className="bg-gray-50 rounded-full p-1.5 flex items-center gap-1 shadow-inner border border-gray-100">
+            <div className="bg-theme-subtle rounded-full p-1.5 flex items-center gap-1 shadow-inner border border-theme">
               {tabs.map((tab) => (
                 <button
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id)}
                   className={`flex items-center gap-3 px-8 py-3.5 rounded-full font-black text-[11px] uppercase tracking-widest transition-all duration-300 ${
                     activeTab === tab.id
-                      ? 'bg-white text-gray-800 shadow-md'
-                      : 'text-gray-400 hover:text-gray-600'
+                      ? 'bg-theme-card text-theme-main shadow-md'
+                      : 'text-theme-muted hover:text-theme-main'
                   }`}
                 >
                   <span className={activeTab === tab.id ? 'text-[#3498DB]' : ''}>{tab.icon}</span>
@@ -90,13 +90,13 @@ const StaffDashboard = () => {
           </div>
 
           {/* Form Section */}
-          <div className="max-w-5xl mx-auto bg-white rounded-2xl shadow-sm border border-gray-50 p-10 mb-20">
-             <h2 className="text-2xl font-black text-gray-800 mb-8">Log New Activity</h2>
+          <div className="max-w-5xl mx-auto bg-theme-card rounded-2xl shadow-sm border border-theme p-10 mb-20">
+             <h2 className="text-2xl font-black text-theme-main mb-8">Log New Activity</h2>
 
              <div className="space-y-8">
                {/* Activity Type Selection */}
                <section>
-                 <label className="block text-[10px] font-black text-gray-300 uppercase tracking-widest mb-4 ml-1">Activity Type</label>
+                 <label className="block text-[10px] font-black text-theme-light uppercase tracking-widest mb-4 ml-1">Activity Type</label>
                  <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
                    {activityTypes.map((type) => (
                      <button
@@ -110,8 +110,8 @@ const StaffDashboard = () => {
                       }}
                       className={`flex flex-col items-center justify-center py-6 px-4 rounded-xl border transition-all duration-300 group ${
                         activeActivityType === type.id
-                          ? 'border-blue-400 bg-blue-50 text-[#3498DB] shadow-sm'
-                          : 'border-gray-100 bg-white text-gray-400 hover:border-gray-200'
+                          ? 'border-blue-400 bg-blue-50 dark:bg-blue-900/20 text-[#3498DB] shadow-sm'
+                          : 'border-theme bg-theme-page text-theme-muted hover:border-blue-200'
                       }`}
                      >
                        <div className="text-2xl mb-3 group-hover:scale-110 transition-transform">{type.icon}</div>
@@ -123,52 +123,52 @@ const StaffDashboard = () => {
 
                {/* Child Selector */}
                <section>
-                 <label className="block text-[10px] font-black text-gray-300 uppercase tracking-widest mb-4 ml-1">Select Child</label>
+                 <label className="block text-[10px] font-black text-theme-light uppercase tracking-widest mb-4 ml-1">Select Child</label>
                  <div className="relative">
-                    <select className="w-full h-14 bg-[#FEF9F5] border-0 rounded-full px-8 font-bold text-gray-700 focus:ring-2 focus:ring-blue-100 outline-none transition-all appearance-none cursor-pointer">
+                    <select className="w-full h-14 bg-theme-input border border-theme rounded-full px-8 font-bold text-theme-main focus:ring-2 focus:ring-blue-100 outline-none transition-all appearance-none cursor-pointer">
                       <option value="">Choose a student...</option>
                       <option value="1">Aarav Sharma</option>
                       <option value="2">Vivaan Gupta</option>
                       <option value="3">Isha Patel</option>
                     </select>
-                    <FaChevronDown className="absolute right-6 top-1/2 -translate-y-1/2 text-gray-300 pointer-events-none" />
+                    <FaChevronDown className="absolute right-6 top-1/2 -translate-y-1/2 text-theme-muted pointer-events-none" />
                  </div>
                </section>
 
                {/* Activity Title */}
                <section>
-                 <label className="block text-[10px] font-black text-gray-300 uppercase tracking-widest mb-4 ml-1">Activity Title</label>
+                 <label className="block text-[10px] font-black text-theme-light uppercase tracking-widest mb-4 ml-1">Activity Title</label>
                  <input 
                   type="text" 
                   placeholder="e.g., Painting Session" 
-                  className="w-full h-14 bg-[#FEF9F5] border border-orange-50 rounded-lg px-8 font-bold text-gray-700 focus:ring-2 focus:ring-blue-100 outline-none transition-all placeholder:text-gray-300"
+                  className="w-full h-14 bg-theme-input border border-theme rounded-lg px-8 font-bold text-theme-main focus:ring-2 focus:ring-blue-100 outline-none transition-all placeholder:text-theme-muted"
                  />
                </section>
 
                {/* Description Textarea */}
                <section>
-                 <label className="block text-[10px] font-black text-gray-300 uppercase tracking-widest mb-4 ml-1">Description</label>
+                 <label className="block text-[10px] font-black text-theme-light uppercase tracking-widest mb-4 ml-1">Description</label>
                  <textarea 
                   rows="4" 
                   placeholder="Describe the activity, meals, or observations..." 
-                  className="w-full bg-[#FEF9F5] border border-orange-50 rounded-lg p-8 font-bold text-gray-700 focus:ring-2 focus:ring-blue-100 outline-none transition-all resize-none placeholder:text-gray-300"
+                  className="w-full bg-theme-input border border-theme rounded-lg p-8 font-bold text-theme-main focus:ring-2 focus:ring-blue-100 outline-none transition-all resize-none placeholder:text-theme-muted"
                  />
                </section>
 
                {/* Add Photo Area */}
                <section>
-                 <label className="block text-[10px] font-black text-gray-300 uppercase tracking-widest mb-4 ml-1">Add Photo (Optional)</label>
-                 <div className="w-full h-40 border-2 border-dashed border-orange-100 rounded-xl bg-[#FEF9F5] flex flex-col items-center justify-center gap-3 hover:border-blue-200 hover:bg-blue-50/30 transition-all cursor-pointer group">
-                    <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center shadow-sm text-gray-200 group-hover:text-blue-400">
+                 <label className="block text-[10px] font-black text-theme-light uppercase tracking-widest mb-4 ml-1">Add Photo (Optional)</label>
+                 <div className="w-full h-40 border-2 border-dashed border-theme rounded-xl bg-theme-input flex flex-col items-center justify-center gap-3 hover:border-blue-200 hover:bg-blue-50/10 transition-all cursor-pointer group">
+                    <div className="w-12 h-12 bg-theme-card rounded-xl flex items-center justify-center shadow-sm text-theme-muted group-hover:text-blue-400">
                       <FaCamera className="text-xl" />
                     </div>
-                    <span className="text-[10px] font-black uppercase tracking-widest text-gray-300 group-hover:text-blue-400 transition-colors">Click to upload photo</span>
+                    <span className="text-[10px] font-black uppercase tracking-widest text-theme-muted group-hover:text-blue-400 transition-colors">Click to upload photo</span>
                  </div>
                </section>
 
                {/* Log Button */}
                <div className="pt-4">
-                 <button className="w-full h-16 bg-gradient-to-r from-[#3498DB] to-[#2980B9] text-white font-black text-[12px] uppercase tracking-widest rounded-full shadow-lg shadow-blue-100 hover:shadow-xl transition-all active:scale-95">
+                 <button className="w-full h-16 bg-gradient-to-r from-[#3498DB] to-[#2980B9] text-white font-black text-[12px] uppercase tracking-widest rounded-full shadow-lg shadow-blue-100/20 hover:shadow-xl transition-all active:scale-95">
                    Log Activity
                  </button>
                </div>

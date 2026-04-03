@@ -1,3 +1,49 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  --bg-page: #FDFDFD;
+  --bg-card: #FFFFFF;
+  --bg-input: #FEF9F5;
+  --bg-subtle: #F9FAFB;
+  --text-main: #1F2937;
+  --text-muted: #6B7280;
+  --text-light: #9CA3AF;
+  --border-color: #F3F4F6;
+  --transition-speed: 0.3s;
+}
+
+.dark-mode {
+  --bg-page: #121212;
+  --bg-card: #1E1E1E;
+  --bg-input: #2D2D2D;
+  --bg-subtle: #181818;
+  --text-main: #F3F4F6;
+  --text-muted: #9CA3AF;
+  --text-light: #6B7280;
+  --border-color: rgba(255,255,255,0.2);
+}
+
+body {
+  background-color: var(--bg-page);
+  color: var(--text-main);
+  transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
+}
+
+*, *::before, *::after {
+  transition: background-color var(--transition-speed) ease, 
+              border-color var(--transition-speed) ease, 
+              color var(--transition-speed) ease,
+              box-shadow var(--transition-speed) ease;
+}
+
+/* Custom utility classes if needed, or we just use variables */
+.bg-theme-page { background-color: var(--bg-page); }
+.bg-theme-card { background-color: var(--bg-card); }
+.bg-theme-input { background-color: var(--bg-input); }
+.bg-theme-subtle { background-color: var(--bg-subtle); }
+.text-theme-main { color: var(--text-main); }
+.text-theme-muted { color: var(--text-muted); }
+.text-theme-light { color: var(--text-light); }
+.border-theme { border-color: var(--border-color); }
